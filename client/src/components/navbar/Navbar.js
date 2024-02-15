@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { selectitems } from "../../Redux/Slices/ItemsSlice";
+import Modal from "../../Modal/Modal";
+import Cart from "../../Screens/Cart/Cart";
 
 const Navbar = () => {
+  const data = useSelector(selectitems)
+  const [cartview, setcartview] = useState(false)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -41,6 +47,9 @@ const Navbar = () => {
                 Add-Food-Item
               </Link>
             </li>
+            <div className="btn text-white mx-2" onClick={()=>setcartview(true)}>Cart { data? data.length-1:0}
+            </div>
+            {cartview?<Modal onClose={()=>setcartview(false)}  ><Cart/></Modal>:null}
           </ul>
         </div>
       </div>

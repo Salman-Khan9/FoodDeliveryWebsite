@@ -13,7 +13,6 @@ const Home = () => {
     });
   }, []);
 
-  console.log(fooditems);
 
   return (
     <div>
