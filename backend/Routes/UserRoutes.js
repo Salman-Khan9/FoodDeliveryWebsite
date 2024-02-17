@@ -36,7 +36,6 @@ route.post("/login", async (req, res) => {
     if (!user) {
       res.status(400).json("no user on this email");
     }
-
     const passcheck = await bcrypt.compare(password, user.password);
     if (user && passcheck) {
       res.status(200).json(user);

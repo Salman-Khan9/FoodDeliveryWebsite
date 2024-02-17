@@ -1,35 +1,42 @@
 import React from "react";
-import { delete_items, selectitems } from "../../Redux/Slices/ItemsSlice";
-import {  useDispatch, useSelector } from "react-redux";
+import {
+  delete_item,
+  delete_items,
+  selectitems,
+} from "../../Redux/Slices/ItemsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 const Cart = () => {
-  
   const backendurl = process.env.REACT_APP_BACKEND_URL;
   const data = useSelector(selectitems);
-  const dispatch = useDispatch()
-  console.log(data)
-  const totalPrice = data.reduce((total, food) =>  total + food.finalprice, 0)
-   
+  const dispatch = useDispatch();
+  const totalPrice = data.reduce((total, food) => total + food.finalprice, 0);
 
-  const payload = data.map(data => ({
+  const payload = data.map((data) => ({
     name: data.name,
     category: data.category,
     quantity: data.quantity,
     finalprice: data.finalprice,
-    totalamount: totalPrice.toString()
+    totalamount: totalPrice.toString(),
   }));
-  
-  console.log (payload)
-  
+
   const Handlesubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await axios.post(`${backendurl}/order`, payload);
-      
-    dispatch(delete_items())
+      if (payload.length > 0) {
+        await axios.post(`${backendurl}/order`, payload);
+
+        dispatch(delete_items());
+      } else {
+        console.log("error");
+      }
     } catch (error) {
       console.log(error);
     }
+  };
+  const handledelete = (index) => {
+    console.log(index);
+    dispatch(delete_item(index));
   };
   return (
     <>
@@ -56,25 +63,27 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody className="text-success">
-            {data &&  data.map((food, Index) => (
-                  <tr key={Index}>
-                    <th style={{ backgroundColor: "grey" }} scope="row">
-                      {Index + 1}
-                    </th>
-                    <td style={{ backgroundColor: "grey" }}>{food.name}</td>
-                    <td style={{ backgroundColor: "grey" }}>{food.category}</td>
-                    <td style={{ backgroundColor: "grey" }}>{food.quantity}</td>
-                    <td style={{ backgroundColor: "grey" }}>
-                      {food.finalprice}
-                    </td>
-                    <td style={{ backgroundColor: "grey" }}>
-                      <button type="button" className="btn p-0">
-                        delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              }
+            {data &&
+              data.map((food, Index) => (
+                <tr key={Index}>
+                  <th style={{ backgroundColor: "grey" }} scope="row">
+                    {Index + 1}
+                  </th>
+                  <td style={{ backgroundColor: "grey" }}>{food.name}</td>
+                  <td style={{ backgroundColor: "grey" }}>{food.category}</td>
+                  <td style={{ backgroundColor: "grey" }}>{food.quantity}</td>
+                  <td style={{ backgroundColor: "grey" }}>{food.finalprice}</td>
+                  <td style={{ backgroundColor: "grey" }}>
+                    <button
+                      type="button"
+                      className="btn p-0"
+                      onClick={() => handledelete(Index)}
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
         <div>

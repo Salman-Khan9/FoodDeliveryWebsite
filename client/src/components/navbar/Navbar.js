@@ -8,8 +8,8 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { Badge } from "react-bootstrap";
 
 const Navbar = () => {
-  const data = useSelector(selectitems)
-  const [cartview, setcartview] = useState(false)
+  const data = useSelector(selectitems);
+  const [cartview, setcartview] = useState(false);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -49,9 +49,18 @@ const Navbar = () => {
                 Add-Food-Item
               </Link>
             </li>
-            <div className="btn text-white  " onClick={()=>setcartview(true)}><MdAddShoppingCart />Cart <Badge pill bg="danger">{ data? data.length:0}</Badge>
+            <div className="btn text-white  " onClick={() => setcartview(true)}>
+              <MdAddShoppingCart />
+              Cart{" "}
+              <Badge pill bg="danger">
+                {data ? data.length : 0}
+              </Badge>
             </div>
-            {cartview?<Modal onClose={()=>setcartview(false)}  ><Cart/></Modal>:null}
+            {cartview ? (
+              <Modal onClose={() => setcartview(false)}>
+                <Cart />
+              </Modal>
+            ) : null}
           </ul>
         </div>
       </div>
