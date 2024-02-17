@@ -48,7 +48,7 @@ const dispatchdata=(items) =>{
           </select>
           <div> Price: {finalprice}</div>
           <hr></hr>
-          <button className="ms-5 rounded bg-info" onClick={()=>dispatchdata([{name,category,quantity,finalprice}])}>Add-to-Cart</button>
+          <button className="ms-5 rounded bg-info" onClick={()=>dispatchdata({name,category,quantity,finalprice})}>Add-to-Cart</button>
         </div>
       </div>
     </div>

@@ -49,7 +49,7 @@ const Navbar = () => {
                 Add-Food-Item
               </Link>
             </li>
-            <div className="btn text-white  " onClick={()=>setcartview(true)}><MdAddShoppingCart />Cart <Badge pill bg="danger">{ data? data.length-1:0}</Badge>
+            <div className="btn text-white  " onClick={()=>setcartview(true)}><MdAddShoppingCart />Cart <Badge pill bg="danger">{ data? data.length:0}</Badge>
             </div>
             {cartview?<Modal onClose={()=>setcartview(false)}  ><Cart/></Modal>:null}
           </ul>

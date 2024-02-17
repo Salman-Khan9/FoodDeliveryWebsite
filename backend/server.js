@@ -2,7 +2,8 @@ const dotenv = require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const route = require("./Routes/UserRoutes");
-const routes = require("./Routes/Food_items_routes");
+const router = require("./Routes/Food_items_routes")
+const routes = require("./Routes/Orders")
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
@@ -15,6 +16,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(route);
+app.use(router);
 app.use(routes);
 
 const Port = 7001 || Process.env.Port;

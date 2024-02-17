@@ -1,7 +1,7 @@
 const express = require("express");
 const FoodItems = require("../model/Food_Items");
-const routes = express.Router();
-routes.post("/add/food/items", async (req, res) => {
+const router = express.Router();
+router.post("/add/food/items", async (req, res) => {
   try {
     const { name, category, price } = req.body;
     const fooditems = await FoodItems.create({
@@ -14,7 +14,7 @@ routes.post("/add/food/items", async (req, res) => {
     res.status(400).json(error);
   }
 });
-routes.get("/food/items", async (req, res) => {
+router.get("/food/items", async (req, res) => {
   try {
     const data = await FoodItems.find();
     res.status(200).json(data);
@@ -22,7 +22,7 @@ routes.get("/food/items", async (req, res) => {
     res.status(400).json(error);
   }
 });
-routes.get("/item/:id", async (req, res) => {
+router.get("/item/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const data = await FoodItems.findById(id);
@@ -33,4 +33,4 @@ routes.get("/item/:id", async (req, res) => {
 
 });
 
-module.exports = routes;
+module.exports = router;

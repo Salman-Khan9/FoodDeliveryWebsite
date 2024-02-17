@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialstate = {
-    items:[{
-        name:"",
-        category:"",
-        quantity:"",
-        finalprice:"",
-    }]
+    items:[]
 }
 
 const itemslice = createSlice(
@@ -20,12 +15,18 @@ const itemslice = createSlice(
                     items: [...state.items, action.payload]
                 };
 
+            },
+            delete_items(state,action){
+                return{
+                    ...state,
+                    items:[]
+                }
             }
             
         }
     }
     
 )
-export const {set_items} = itemslice.actions
+export const {set_items,delete_items} = itemslice.actions
 export const selectitems = (state) => state.fooditems.items
 export default itemslice.reducer
