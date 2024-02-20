@@ -13,8 +13,14 @@ const scheme = new mongoose.Schema({
     required: true,
   },
   location: {
-    type: String,
-    required: true,
+    latitude: {
+      type: Number,
+      required: true,
+    },
+    longitude: {
+      type: Number,
+      required: true,
+    },
   },
   date: { type: Date, default: Date.now },
 });
