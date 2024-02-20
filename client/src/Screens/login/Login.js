@@ -17,7 +17,7 @@ const Login = () => {
   const handleonsubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${backend_url}/login`, formdata);
+       await axios.post(`${backend_url}/login`, formdata,{withCredentials:true});
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ const Login = () => {
     <div>
       <form>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">
+          <label htmlfor="exampleInputEmail1" className="form-label">
             Email address
           </label>
           <input

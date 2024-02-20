@@ -6,7 +6,10 @@ import {
 } from "../../Redux/Slices/ItemsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import Authenticate from "../../authentication/Auth";
 const Cart = () => {
+  Authenticate("/Login")
+  
   const backendurl = process.env.REACT_APP_BACKEND_URL;
   const data = useSelector(selectitems);
   const dispatch = useDispatch();
@@ -24,7 +27,7 @@ const Cart = () => {
     e.preventDefault();
     try {
       if (payload.length > 0) {
-        await axios.post(`${backendurl}/order`, payload);
+        await axios.post(`${backendurl}/order`, payload,{withCredentials:true});
 
         dispatch(delete_items());
       } else {

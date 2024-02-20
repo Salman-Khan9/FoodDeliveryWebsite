@@ -2,9 +2,18 @@ const express = require("express");
 const User = require("../model/User_scheme");
 const route = express.Router();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
+
+const generateToken =(id)=>{
+ return jwt.sign({id},process.env.SECRET_KEY,{expiresIn:"1d"})
+}
 route.post("/signup", async (req, res) => {
   try {
     const { name, email, password, location } = req.body;
+    const emailexist = await User.findOne({email})
+    if(emailexist){
+      res.status(400).json("email Already exist")
+    }
     const saltRounds = 10;
     const hashpass = await bcrypt.hash(password, saltRounds);
     const user = await User.create({
@@ -13,15 +22,15 @@ route.post("/signup", async (req, res) => {
       password: hashpass,
       location: location,
     });
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(400).json(error);
-  }
-});
-route.get("/", async (req, res) => {
-  try {
-    const data = await User.find();
-    res.status(200).json(data);
+    const token = generateToken(user._id)
+res.cookie("token",token,{
+  path:"/",
+  httpOnly : true,
+  expires : new Date(Date.now()+86400*1000),
+  samesite : "none",
+  secure : true,
+})
+    res.status(200).json({user,token});
   } catch (error) {
     res.status(400).json(error);
   }
@@ -29,19 +38,72 @@ route.get("/", async (req, res) => {
 route.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
     if (!email || !password) {
       res.status(400).json("Please Enter Your credentials");
     }
+    const user = await User.findOne({ email });
+   
+
+    
     if (!user) {
       res.status(400).json("no user on this email");
     }
     const passcheck = await bcrypt.compare(password, user.password);
+    const token = generateToken(user._id)
+    res.cookie("token",token,{
+      path : "/",
+      httpOnly:true,
+expires : new Date(Date.now()+86400*1000),
+samesite : "none",
+secure : true,})
+
+    
     if (user && passcheck) {
-      res.status(200).json(user);
-    }
+      
+    res.status(200).json({user,token});
+      
+    }else{
+      res.status(400).json("invalid email or password")
+  }
+   
+
   } catch (error) {
     res.status(400).json(error);
   }
-});
+})
+
+route.get("/logout",async(req,res)=>{
+    try {
+        res.cookie("token","",{
+            path:"/",
+            httpOnly : true,
+            expires : new Date(0),
+            samesite : "none",
+            secure : true,
+          })
+    return res.status(200).json("loggedout successfully")
+    } catch (error) {
+    res.status(400).json(error)
+        
+    }
+    
+})
+route.get("/logged",async(req,res)=>{
+  try {
+    const token = req.cookies.token
+    if(!token){
+      return res.json(false)
+    }
+    const verify = jwt.verify(token,process.env.SECRET_KEY)
+    if (verify){
+     return res.status(200).json(true)
+    }
+    else{
+      return res.status(400).json(false)
+    }
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
+
 module.exports = route;

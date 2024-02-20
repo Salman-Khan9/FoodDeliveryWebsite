@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Authenticate from "../../authentication/Auth";
 const AddFoodItem = () => {
+  Authenticate("/Login")
   const initialvalue = {
     name: "",
     category: "",
@@ -35,7 +37,7 @@ const AddFoodItem = () => {
   const onSubmitData = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:7001/add/food/items`, formdata);
+      await axios.post(`http://localhost:7001/add/food/items`, formdata,{withCredentials:true});
     } catch (error) {
       console.log(error);
     }
