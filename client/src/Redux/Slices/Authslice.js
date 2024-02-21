@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialstate = {
-  logstatus: false
+  logstatus: false,
+  Adminlogstatus: JSON.parse(localStorage.getItem('Adminlogstatus')) || false
 };
 
 const authslice = createSlice({
@@ -10,11 +11,15 @@ const authslice = createSlice({
   reducers: {
     set_loginstatus(state, action) {
       state.logstatus = action.payload
+    },set_Adminloginstatus(state, action) {
+      state.Adminlogstatus = action.payload;
+      localStorage.setItem('Adminlogstatus', JSON.stringify(action.payload));
     },
    
     
   },
 });
-export const { set_loginstatus} = authslice.actions;
+export const { set_loginstatus,set_Adminloginstatus} = authslice.actions;
 export const selectloginstatus = (state) => state.auth.logstatus;
+export const selectAdminloginstatus = (state) => state.auth.Adminlogstatus;
 export default authslice.reducer;

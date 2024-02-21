@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Authenticate from "../../authentication/Auth";
+import AdminAuth from "../../authentication/AdminAuth";
 const AddFoodItem = () => {
-  Authenticate("/Login")
+  AdminAuth("/")
   const initialvalue = {
     name: "",
     category: "",
@@ -64,18 +64,23 @@ const AddFoodItem = () => {
           <input
             type="text"
             name="price.small"
+            placeholder="Enter Price of small size"
             value={formdata.price.small}
             onChange={handleonchange}
           />
           <input
             type="text"
             name="price.medium"
+            placeholder="Enter Price of medium size"
+
             value={formdata.price.medium}
             onChange={handleonchange}
           />
           <input
             type="text"
             name="price.large"
+            placeholder="Enter Price of large size"
+
             value={formdata.price.large}
             onChange={handleonchange}
           />

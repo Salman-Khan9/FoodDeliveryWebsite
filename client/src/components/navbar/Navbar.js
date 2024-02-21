@@ -7,11 +7,12 @@ import Cart from "../../Screens/Cart/Cart";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Badge } from "react-bootstrap";
 import axios from "axios"
-import { selectloginstatus, set_loginstatus } from "../../Redux/Slices/Authslice";
+import { selectAdminloginstatus, selectloginstatus, set_Adminloginstatus, set_loginstatus } from "../../Redux/Slices/Authslice";
 const backend_url = process.env.REACT_APP_BACKEND_URL
 const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const Adminlogstatus = useSelector(selectAdminloginstatus)
   const data = useSelector(selectitems);
   const logged = useSelector(selectloginstatus);
   const [cartview, setcartview] = useState(false);
@@ -19,6 +20,7 @@ const Navbar = () => {
     try {
      await axios.get(`${backend_url}/logout`,{withCredentials:true})
      dispatch(set_loginstatus(false))
+     dispatch(set_Adminloginstatus(false))
      dispatch(delete_items())
      navigate("/Login")
 
@@ -52,11 +54,11 @@ const Navbar = () => {
            </Link>
          </li>
         
-         <li className="nav-item">
+     {Adminlogstatus?    <li className="nav-item">
            <Link className="nav-link" to="/AddFoodItem">
              Add-Food-Item
            </Link>
-         </li>
+         </li>:null}
          
          <div className="btn text-white  " onClick={() => setcartview(true)}>
            <MdAddShoppingCart />

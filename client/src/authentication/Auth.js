@@ -7,7 +7,6 @@ import axios from "axios"
 const backend_url = process.env.REACT_APP_BACKEND_URL
 const Authenticate = (path) => {
   const logstatus = useSelector(selectloginstatus)
-console.log(logstatus)
     const dispatch = useDispatch()
     const Navigate = useNavigate()
     useEffect(() => {

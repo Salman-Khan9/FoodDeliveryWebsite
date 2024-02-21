@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { set_loginstatus } from "../../Redux/Slices/Authslice";
+import { useDispatch} from "react-redux";
+import {  set_Adminloginstatus, set_loginstatus } from "../../Redux/Slices/Authslice";
 const Login = () => {
   const navigate = useNavigate();
 const dispatch = useDispatch()
   const backend_url = process.env.REACT_APP_BACKEND_URL;
+  useEffect(() => {
+    const adminLogStatus = JSON.parse(localStorage.getItem('Adminlogstatus'));
+    if (adminLogStatus) {
+      dispatch(set_Adminloginstatus(adminLogStatus));
+    }
+  }, [dispatch]);
   const initialvalue = {
     email: "",
     password: "",
@@ -20,8 +26,15 @@ const dispatch = useDispatch()
   const handleonsubmit = async (e) => {
     e.preventDefault();
     try {
-       await axios.post(`${backend_url}/login`, formdata,{withCredentials:true});
+     const res =  await axios.post(`${backend_url}/login`, formdata,{withCredentials:true});
+     console.log(res.data)
+
+     if(res.data=== process.env.REACT_APP_ADMIN_EMAIL ){
+      dispatch(set_Adminloginstatus(true))
+      dispatch(set_loginstatus(false))
+     }else{
        dispatch(set_loginstatus(true))
+     }
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -31,7 +44,7 @@ const dispatch = useDispatch()
     <div>
       <form>
         <div className="mb-3">
-          <label htmlfor="exampleInputEmail1" className="form-label">
+          <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
           </label>
           <input
@@ -45,7 +58,7 @@ const dispatch = useDispatch()
           />
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
+          <label htmlFor="exampleInputPassword1" className="form-label">
             Password
           </label>
           <input

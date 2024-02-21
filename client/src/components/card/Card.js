@@ -19,8 +19,6 @@ const Card = ({ items }) => {
   const dispatchdata = (items) => {
     dispatch(set_items(items));
   };
-  console.log(itemprice);
-  console.log(quantity);
   return (
     <div>
       <div
@@ -29,8 +27,8 @@ const Card = ({ items }) => {
       >
         <img src={burger} className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <p className="card-text">{category}</p>
+          <h5 className="card-title">{category}</h5>
+          <p className="card-text">{name}</p>
           <select
             value={quantity}
             onChange={handleonquantitychange}

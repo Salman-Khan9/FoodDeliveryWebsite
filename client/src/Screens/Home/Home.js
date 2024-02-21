@@ -3,10 +3,13 @@ import Carousel from "../../components/carousel/Carousel";
 import Card from "../../components/card/Card";
 import axios from "axios";
 import Authenticate from "../../authentication/Auth";
+import { useSelector } from "react-redux";
+import { selectAdminloginstatus } from "../../Redux/Slices/Authslice";
 const Home = () => {
   Authenticate("/Login")
   const [fooditems, setfooditems] = useState([]);
-
+const logstatus = useSelector(selectAdminloginstatus)
+console.log(logstatus , "logstatus")
   useEffect(() => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
