@@ -59,8 +59,8 @@ secure : true,})
 
     
     if (user && passcheck) {
-      
-    res.status(200).json({user,token});
+      const {email} = user
+    res.status(200).json(email);
       
     }else{
       res.status(400).json("invalid email or password")
