@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { set_loginstatus } from "../../Redux/Slices/Authslice";
 const Login = () => {
   const navigate = useNavigate();
+const dispatch = useDispatch()
   const backend_url = process.env.REACT_APP_BACKEND_URL;
   const initialvalue = {
     email: "",
@@ -18,6 +21,7 @@ const Login = () => {
     e.preventDefault();
     try {
        await axios.post(`${backend_url}/login`, formdata,{withCredentials:true});
+       dispatch(set_loginstatus(true))
       navigate("/");
     } catch (error) {
       console.log(error);

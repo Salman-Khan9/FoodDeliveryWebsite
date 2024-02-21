@@ -14,7 +14,7 @@ console.log(logstatus)
      const loggedinstatus = async ()=>{
      const status = await axios.get(`${backend_url}/logged`,{withCredentials:true})
      dispatch(set_loginstatus(status.data))
-     if(logstatus!==true){
+     if(status.data!==true){
       Navigate(path)
     }
     }

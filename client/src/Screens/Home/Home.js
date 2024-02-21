@@ -17,15 +17,18 @@ const Home = () => {
 
   return (
     
-    <div>
-      {" "}
-      <Carousel></Carousel>
-      <div>
-        {fooditems.map((items, index) => {
-          return <Card items={items} />;
+    <>
+    <Carousel></Carousel>
+
+     <div className="container">
+     <div className="row">
+     {fooditems.map((items, index) => {
+        return   <div key={index} className="col-md-4">
+          <Card  items={items} />
+          </div>;
         })}
-      </div>
-    </div>
+     </div>
+   </div></>
   );
 };
 

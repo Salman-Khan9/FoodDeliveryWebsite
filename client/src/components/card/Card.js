@@ -24,7 +24,7 @@ const Card = ({ items }) => {
   return (
     <div>
       <div
-        className="card mt-3 ms-3 "
+        className="card mt-3  "
         style={{ width: "18rem", maxHeight: "380px" }}
       >
         <img src={burger} className="card-img-top" alt="..." />
