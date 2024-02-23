@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-    axios.get(`${BACKEND_URL}/food/items`,{withCredentials:true}).then((data) => {
+    axios.get(`https://food-delivery-website-lovat.vercel.app/food/items`,{withCredentials:true}).then((data) => {
       setfooditems(data.data[0] );
       setfoodcategory(data.data[1] );
     });

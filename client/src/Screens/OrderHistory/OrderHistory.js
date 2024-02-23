@@ -13,7 +13,7 @@ const OrderHistory = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get(`${backend_url}/orderhistory`, { withCredentials: true });
+                const res = await axios.get(`https://food-delivery-website-lovat.vercel.app/orderhistory`, { withCredentials: true });
                 setOrders(res.data);
             } catch (error) {
                 console.log(error);

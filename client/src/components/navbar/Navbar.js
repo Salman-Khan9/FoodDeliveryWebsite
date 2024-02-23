@@ -18,7 +18,7 @@ const Navbar = () => {
   const [cartview, setcartview] = useState(false);
   const handlelogout = async()=>{
     try {
-     await axios.get(`${backend_url}/logout`,{withCredentials:true})
+     await axios.get(`https://food-delivery-website-lovat.vercel.app/logout`,{withCredentials:true})
      dispatch(set_loginstatus(false))
      dispatch(set_Adminloginstatus(false))
      dispatch(delete_items())

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import AdminAuth from "../../authentication/AdminAuth";
+import Footer from "../../components/footer/Footer";
 const AddFoodItem = () => {
   AdminAuth("/")
   const initialvalue = {
@@ -37,7 +38,7 @@ const AddFoodItem = () => {
   const onSubmitData = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:7001/add/food/items`, formdata,{withCredentials:true});
+      await axios.post(`https://food-delivery-website-lovat.vercel.app/add/food/items`, formdata,{withCredentials:true});
     } catch (error) {
       console.log(error);
     }
@@ -110,6 +111,8 @@ const AddFoodItem = () => {
           </button>
         </form>
       </div>
+      <Footer></Footer>
+
     </div>
   );
 };
