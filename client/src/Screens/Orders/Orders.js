@@ -3,7 +3,6 @@ import axios from "axios";
 import AdminAuth from '../../authentication/AdminAuth';
 import Footer from '../../components/footer/Footer';
 
-const backend_url = process.env.REACT_APP_BACKEND_URL;
 
 const Orders = () => {
     AdminAuth("/")

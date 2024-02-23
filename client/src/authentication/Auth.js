@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { selectloginstatus, set_loginstatus } from "../Redux/Slices/Authslice";
 
 import axios from "axios"
-const backend_url = process.env.REACT_APP_BACKEND_URL
 const Authenticate = (path) => {
   const logstatus = useSelector(selectloginstatus)
     const dispatch = useDispatch()

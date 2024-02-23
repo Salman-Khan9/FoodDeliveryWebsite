@@ -10,7 +10,6 @@ import Authenticate from "../../authentication/Auth";
 const Cart = () => {
   Authenticate("/Login")
   
-  const backendurl = process.env.REACT_APP_BACKEND_URL;
   const data = useSelector(selectitems);
   const dispatch = useDispatch();
   const totalPrice = data.reduce((total, food) => total + food.finalprice, 0);

@@ -8,7 +8,6 @@ import Footer from "../../components/footer/Footer";
 const Login = () => {
   const navigate = useNavigate();
 const dispatch = useDispatch()
-  const backend_url = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const adminLogStatus = JSON.parse(localStorage.getItem('Adminlogstatus'));
     if (adminLogStatus) {

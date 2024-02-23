@@ -3,13 +3,11 @@ import Carousel from "../../components/carousel/Carousel";
 import Card from "../../components/card/Card";
 import axios from "axios";
 import Authenticate from "../../authentication/Auth";
-import Footer from "../../components/footer/Footer";
 const Home = () => {
   Authenticate("/Login")
   const [fooditems, setfooditems] = useState([]);
   const [foodcategory, setfoodcategory] = useState([]);
   useEffect(() => {
-    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
     axios.get(`https://food-delivery-website-lovat.vercel.app/food/items`,{withCredentials:true}).then((data) => {
       setfooditems(data.data[0] );

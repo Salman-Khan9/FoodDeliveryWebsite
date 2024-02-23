@@ -8,7 +8,6 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { Badge } from "react-bootstrap";
 import axios from "axios"
 import { selectAdminloginstatus, selectloginstatus, set_Adminloginstatus, set_loginstatus } from "../../Redux/Slices/Authslice";
-const backend_url = process.env.REACT_APP_BACKEND_URL
 const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()

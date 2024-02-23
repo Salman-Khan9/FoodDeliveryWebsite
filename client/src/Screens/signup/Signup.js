@@ -7,7 +7,6 @@ import "../signup/signup.css"
 import Footer from "../../components/footer/Footer";
 const Signup = () => {
   const navigate = useNavigate();
-  const backend_url = process.env.REACT_APP_BACKEND_URL;
   const Apikey = process.env.REACT_APP_OPENCAGE_API_KEY;
   const initialvalue = {
     name: "",
