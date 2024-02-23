@@ -8,14 +8,15 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser())
-
 app.use(cors({
   origin: "https://food-delivery-website-frontend.vercel.app",
   credentials: true  // Allow cookies to be sent in CORS requests
 }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
+
+
 app.use(bodyParser.json());
 
 app.use(route);
