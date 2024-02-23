@@ -4,8 +4,9 @@ import Home from "./Screens/Home/Home";
 import Login from "./Screens/login/Login";
 import Signup from "./Screens/signup/Signup";
 import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
 import AddFoodItem from "./Screens/AddFoodItems/AddFoodItem";
+import OrderHistory from "./Screens/OrderHistory/OrderHistory";
+import Orders from "./Screens/Orders/Orders";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/AddFoodItem" element={<AddFoodItem />} />
+          <Route path="/Orderhistory" element={<OrderHistory />} />
+          <Route path="/Orders" element={<Orders />} />
         </Routes>
-        <Footer></Footer>
       </Router>
     </div>
   );

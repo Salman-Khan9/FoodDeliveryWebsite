@@ -3,6 +3,8 @@ import axios from "axios";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import "../signup/signup.css"
+import Footer from "../../components/footer/Footer";
 const Signup = () => {
   const navigate = useNavigate();
   const backend_url = process.env.REACT_APP_BACKEND_URL;
@@ -78,12 +80,12 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <form>
+    <div className="container mt-5">
+    <div className="card p-4">
+      <h2 className="text-center mb-4">Register</h2>
+      <form onSubmit={handleonsubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputName1" className="form-label">
-            Name
-          </label>
+          <label htmlFor="exampleInputName1" className="form-label">Name</label>
           <input
             type="text"
             name="name"
@@ -94,9 +96,7 @@ const Signup = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
+          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
           <input
             type="email"
             name="email"
@@ -106,14 +106,10 @@ const Signup = () => {
             aria-describedby="emailHelp"
             onChange={handleonchange}
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
+          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
+          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
           <input
             type="password"
             name="password"
@@ -124,30 +120,27 @@ const Signup = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputLocation1" className="form-label">
-            Location
-          </label>
-          <input
-            type="text"
-            name="location"
-            value={formattedAddress}
-            className="form-control"
-            id="exampleInputLocation1"
-            onChange={handleLocationChange}
-          />
-          <button onClick={ongetlocation}>
-            <FaLocationCrosshairs />
-          </button>
+          <label htmlFor="exampleInputLocation1" className="form-label">Location</label>
+          <div className="input-group">
+            <input
+              type="text"
+              name="location"
+              value={formattedAddress}
+              className="form-control"
+              id="exampleInputLocation1"
+              onChange={handleLocationChange}
+            />
+            <button className="btn btn-outline-secondary " type="button" onClick={ongetlocation}>
+              <FaLocationCrosshairs />
+            </button>
+          </div>
         </div>
-        <button
-          type="submit"
-          onClick={handleonsubmit}
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
+    <Footer></Footer>
+
+  </div>
   );
 };
 

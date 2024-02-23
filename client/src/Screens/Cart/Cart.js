@@ -43,40 +43,40 @@ const Cart = () => {
   };
   return (
     <>
-      <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
-        <table className="bg-success table table-hover ">
+      <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md" >
+        <table className="bg-success table table-hover " >
           <thead className=" text-success fs-4">
             <tr>
-              <th style={{ backgroundColor: "grey" }} scope="col">
+              <th style={{ backgroundColor: "#77C3EC" }} scope="col">
                 #
               </th>
-              <th style={{ backgroundColor: "grey" }} scope="col">
+              <th style={{ backgroundColor: "#77C3EC" }} scope="col">
                 Name
               </th>
-              <th style={{ backgroundColor: "grey" }} scope="col">
+              <th style={{ backgroundColor: "#77C3EC" }} scope="col">
                 category
               </th>
-              <th style={{ backgroundColor: "grey" }} scope="col">
+              <th style={{ backgroundColor: "#77C3EC" }} scope="col">
                 Quantity
               </th>
-              <th style={{ backgroundColor: "grey" }} scope="col">
+              <th style={{ backgroundColor: "#77C3EC" }} scope="col">
                 Price
               </th>
-              <th style={{ backgroundColor: "grey" }} scope="col"></th>
+              <th style={{ backgroundColor: "#77C3EC" }} scope="col"></th>
             </tr>
           </thead>
           <tbody className="text-success">
             {data &&
               data.map((food, Index) => (
                 <tr key={Index}>
-                  <th style={{ backgroundColor: "grey" }} scope="row">
+                  <th style={{ backgroundColor: "lightblue" }} scope="row">
                     {Index + 1}
                   </th>
-                  <td style={{ backgroundColor: "grey" }}>{food.name}</td>
-                  <td style={{ backgroundColor: "grey" }}>{food.category}</td>
-                  <td style={{ backgroundColor: "grey" }}>{food.quantity}</td>
-                  <td style={{ backgroundColor: "grey" }}>{food.finalprice}</td>
-                  <td style={{ backgroundColor: "grey" }}>
+                  <td style={{ backgroundColor: "lightblue" }}>{food.name}</td>
+                  <td style={{ backgroundColor: "lightblue" }}>{food.category}</td>
+                  <td style={{ backgroundColor: "lightblue" }}>{food.quantity}</td>
+                  <td style={{ backgroundColor: "lightblue" }}>{food.finalprice}</td>
+                  <td style={{ backgroundColor: "lightblue" }}>
                     <button
                       type="button"
                       className="btn p-0"

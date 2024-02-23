@@ -20,8 +20,10 @@ router.post("/add/food/items",Auth,async (req, res) => {
 router.get("/food/items",Auth,async (req, res) => {
   try {
     const data = await FoodItems.find();
-    const {name,category,price} = data
-    res.status(200).json(data);
+    const category = data.map((foodcat)=>foodcat.category)
+    const uniqueArray = [...new Set(category)];
+    const payload = [data,uniqueArray]
+    res.status(200).json(payload);
   } catch (error) {
     res.status(400).json(error);
   }

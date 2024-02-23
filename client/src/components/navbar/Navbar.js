@@ -30,7 +30,7 @@ const Navbar = () => {
 
   }
   return (
-   <> {logged?<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+   <> {logged || Adminlogstatus?<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
    <div className="container-fluid">
      <Link className="navbar-brand" to="/">
        Food Panda
@@ -59,10 +59,15 @@ const Navbar = () => {
              Add-Food-Item
            </Link>
          </li>:null}
-         
-         <div className="btn text-white  " onClick={() => setcartview(true)}>
+         {Adminlogstatus?    <li className="nav-item">
+           <Link className="nav-link" to="/Orders">
+             Orders
+           </Link>
+         </li>:null}
+         <li className="nav-item">
+         <div className=" nav-link text-white" style={{cursor:"pointer"}} onClick={() => setcartview(true)}>
            <MdAddShoppingCart />
-           Cart{" "}
+           Cart
            <Badge pill bg="danger">
              {data ? data.length : 0}
            </Badge>
@@ -71,7 +76,12 @@ const Navbar = () => {
            <Modal onClose={() => setcartview(false)}>
              <Cart />
            </Modal>
-         ) : null}
+         ) : null}</li>
+         <li className="nav-item">
+        <Link className="nav-link" to="/Orderhistory">
+          Orders-History
+        </Link>
+      </li>
          <li className="nav-item">
            <button className="nav-link" onClick={handlelogout}>
              Logout

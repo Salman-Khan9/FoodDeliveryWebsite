@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import burger from "../images/burger.jpg";
+import card from "../images/card.avif";
 import { useDispatch } from "react-redux";
 import { set_items } from "../../Redux/Slices/ItemsSlice";
 
@@ -20,41 +20,52 @@ const Card = ({ items }) => {
     dispatch(set_items(items));
   };
   return (
-    <div>
-      <div
-        className="card mt-3  "
-        style={{ width: "18rem", maxHeight: "380px" }}
+    <div >
+      <div 
+        className="card mt-3 mb-3  "
+        style={{ width: "18rem", maxHeight: "400px" ,backgroundColor:"#1e1c1c" }}
       >
-        <img src={burger} className="card-img-top" alt="..." />
+        <img src={card} height="180px" className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">{category}</h5>
-          <p className="card-text">{name}</p>
-          <select
-            value={quantity}
-            onChange={handleonquantitychange}
-            className="m-2 h-100 w-20 bg-info text-white rounded"
-          >
-            {Array.from(Array(6), (e, i) => {
-              return (
-                <option key={i + 1} value={i + 1}>
-                  {i + 1}
-                </option>
-              );
-            })}
-          </select>
-          <select
-            value={itemprice}
-            onChange={handleonpricechange}
-            className="m-2 h-100 w-40 bg-info text-white rounded"
-          >
-            <option value={price.small}>Small Size </option>
-            <option value={price.medium}>Medium Size </option>
-            <option value={price.large}>Large Size</option>
-          </select>
-          <div> Price: {finalprice}</div>
+        <div>
+  <span className=" fw-normal text-white fs-5">Name: </span>
+  <p className=" card-title text-white fw-normal d-inline fs-5">{name}</p>
+</div> 
+<div className="d-flex align-items-center">
+  <label className=" mt-1 text-white fw-normal fs-6 me-2"> Quantity:   
+    <select
+      value={quantity}
+      onChange={handleonquantitychange}
+      className="h-100 w-20 bg-success text-white rounded"
+    >
+      {Array.from(Array(6), (e, i) => {
+        return (
+          <option key={i + 1} value={i + 1}>
+            {i + 1}
+          </option>
+        );
+      })}
+    </select>
+  </label>
+  {price.small && price.medium && price.large ? 
+    <label className=" mt-1 fs-6 text-white fw-normal"> Size:
+      <select
+        value={itemprice}
+        onChange={handleonpricechange}
+        className=" h-100 w-40 bg-success text-white rounded"
+      >
+        <option value={price.small}>Small Size </option>
+        <option value={price.medium}>Medium Size </option>
+        <option value={price.large}>Large Size</option>
+      </select>
+    </label>
+    : null
+  }
+</div>
+          <div className=" mt-1 text-white fs-5 fw-bold"> Price: {finalprice}</div>
           <hr></hr>
           <button
-            className="ms-5 rounded bg-info"
+            className="ms-5 text-white fw-bold rounded bg-success"
             onClick={() =>
               dispatchdata({ name, category, quantity, finalprice })
             }

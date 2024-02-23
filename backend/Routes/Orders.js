@@ -6,24 +6,11 @@ routes.post("/order", Auth,async (req, res) => {
   try {
     
     const userId = req.user.id;
-
-    // Map over each object in req.body to extract order details
-    const ordersData = req.body.map((orderDetails) => {
-      const { name, category, quantity, finalprice, totalamount } = orderDetails;
-
-      return {
-        User: userId,
-        name: name,
-        category: category,
-        quantity: quantity,
-        finalprice: finalprice,
-        totalamount: totalamount
-      };
-    });
-    console.log(ordersData)
-
+    const bodyData = req.body;
+    const amount = bodyData.map((Amount)=>Amount.totalamount)
+    const totalamount = amount[0]
     // Create the orders
-    const orders = await Order.create(ordersData);
+    const orders = await Order.create({User:userId,orders:bodyData,totalamount:totalamount});
 
     res.status(201).json(orders); 
 
@@ -39,4 +26,12 @@ routes.get("/orderhistory", Auth,async (req, res) => {
     res.status(400).json("error in getting orders");
   }
 });
+routes.get("/orders",Auth,async(req,res)=>{
+  try {
+    const data = await Order.find().sort({_id:-1})
+    res.status(200).json(data)
+  } catch (error) {
+    console.log(error)
+  }
+})
 module.exports = routes;

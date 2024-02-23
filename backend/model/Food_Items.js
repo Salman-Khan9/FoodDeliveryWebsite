@@ -11,8 +11,8 @@ const scheme = new mongoose.Schema({
   },
   price: {
     small: { type: Number, required: true },
-    medium: { type: Number, required: true },
-    large: { type: Number, required: true },
+    medium: { type: Number },
+    large: { type: Number },
   },
 });
 const FoodItems = mongoose.model("Food_items", scheme);

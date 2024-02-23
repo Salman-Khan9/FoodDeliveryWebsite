@@ -44,48 +44,71 @@ const AddFoodItem = () => {
   };
 
   return (
-    <div>
-      <div className="card" style={{ width: "18rem" }}>
-        <div className="card-body">
-          <input
-            type="text"
-            name="category"
-            value={formdata.category}
-            placeholder="Enter Category "
-            onChange={handleonchange}
-          />
-          <input
-            type="text"
-            name="name"
-            value={formdata.name}
-            placeholder="Enter Name "
-            onChange={handleonchange}
-          />
-          <input
-            type="text"
-            name="price.small"
-            placeholder="Enter Price of small size"
-            value={formdata.price.small}
-            onChange={handleonchange}
-          />
-          <input
-            type="text"
-            name="price.medium"
-            placeholder="Enter Price of medium size"
+    <div className="container mt-5">
+      <div className="card p-4" style={{ backgroundColor: '#f8f9fa', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+        <h2 className="text-center mb-4">Add Food Item</h2>
+        <form>
+        <div className="mb-3">
+            <lable className = "fs-4">Name:</lable>
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              value={formdata.name}
+              placeholder="Enter Name"
+              onChange={handleonchange}
+            />
+          </div>
+          <div className="mb-3">
 
-            value={formdata.price.medium}
-            onChange={handleonchange}
-          />
-          <input
-            type="text"
-            name="price.large"
-            placeholder="Enter Price of large size"
-
-            value={formdata.price.large}
-            onChange={handleonchange}
-          />
-          <button onClick={onSubmitData}>Add-Food-Item</button>
-        </div>
+            <lable className = "fs-4">Category:</lable>
+            <input
+              type="text"
+              className="form-control"
+              name="category"
+              value={formdata.category}
+              placeholder="Enter Category"
+              onChange={handleonchange}
+            />
+          </div>
+          
+          <div className="mb-3">
+            <lable className = "fs-4">Price:</lable>
+            <input
+              type="text"
+              className="form-control"
+              name="price.small"
+              placeholder="Enter Price "
+              value={formdata.price.small}
+              onChange={handleonchange}
+            />
+          </div>
+          <div className="mb-3">
+            <lable className = "fs-4">Optional Price or Medium size Price:</lable>
+            <input
+              type="text"
+              className="form-control"
+              name="price.medium"
+              placeholder="Enter Price of Medium Size"
+              value={formdata.price.medium}
+              onChange={handleonchange}
+            />
+          </div>
+          <div className="mb-3">
+            <lable className = "fs-4">Optional Price or Large size price:</lable>
+            <input
+              type="text"
+              className="form-control"
+              name="price.large"
+              placeholder="Enter Price of Large Size"
+              value={formdata.price.large}
+              onChange={handleonchange}
+            />
+          </div>
+          <button type="button" className="btn btn-primary" style={{ backgroundColor: '#007bff', borderColor: '#007bff' }} onClick={onSubmitData}>
+            Add Food Item
+          </button>
+        </form>
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import {  set_Adminloginstatus, set_loginstatus } from "../../Redux/Slices/Authslice";
+import "../login/Login.css"
+import Footer from "../../components/footer/Footer";
 const Login = () => {
   const navigate = useNavigate();
 const dispatch = useDispatch()
@@ -41,12 +43,12 @@ const dispatch = useDispatch()
     }
   };
   return (
-    <div>
-      <form>
+    <div className="container mt-5">
+    <div className="card p-4">
+      <h2 className="text-center mb-4">Login</h2>
+      <form onSubmit={handleonsubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
+          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
           <input
             type="email"
             value={email}
@@ -58,9 +60,7 @@ const dispatch = useDispatch()
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
+          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
           <input
             type="password"
             name="password"
@@ -70,16 +70,12 @@ const dispatch = useDispatch()
             onChange={handleonchange}
           />
         </div>
-
-        <button
-          type="submit"
-          onClick={handleonsubmit}
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
+    <Footer></Footer>
+
+  </div>
   );
 };
 
