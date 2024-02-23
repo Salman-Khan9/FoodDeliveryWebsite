@@ -10,7 +10,7 @@ const Authenticate = (path) => {
     const Navigate = useNavigate()
     useEffect(() => {
      const loggedinstatus = async ()=>{
-     const status = await axios.get("https://food-delivery-website-lovat.vercel.app/logged",{withCredentials:true})
+     const status = await axios.get("https://food-delivery-website-bay.vercel.app/logged",{withCredentials:true})
      dispatch(set_loginstatus(status.data))
      if(status.data!==true){
       Navigate(path)

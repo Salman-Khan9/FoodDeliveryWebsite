@@ -26,7 +26,7 @@ const Cart = () => {
     e.preventDefault();
     try {
       if (payload.length > 0) {
-        await axios.post("https://food-delivery-website-lovat.vercel.app/order", payload,{withCredentials:true});
+        await axios.post("https://food-delivery-website-bay.vercel.app/order", payload,{withCredentials:true});
 
         dispatch(delete_items());
       } else {

@@ -38,7 +38,7 @@ const AddFoodItem = () => {
   const onSubmitData = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://food-delivery-website-lovat.vercel.app/add/food/items", formdata,{withCredentials:true});
+      await axios.post("https://food-delivery-website-bay.vercel.app/add/food/items", formdata,{withCredentials:true});
     } catch (error) {
       console.log(error);
     }

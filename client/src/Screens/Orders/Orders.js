@@ -13,7 +13,7 @@ const Orders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get("https://food-delivery-website-lovat.vercel.app/orders", { withCredentials: true });
+                const res = await axios.get("https://food-delivery-website-bay.vercel.app/orders", { withCredentials: true });
                 setOrders(res.data);
             } catch (error) {
                 console.log(error);

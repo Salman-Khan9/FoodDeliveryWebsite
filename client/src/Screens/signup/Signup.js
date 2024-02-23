@@ -70,7 +70,7 @@ const Signup = () => {
   const handleonsubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://food-delivery-website-lovat.vercel.app/signup", payload,{withCredentials:true});
+      const res = await axios.post("https://food-delivery-website-bay.vercel.app/signup", payload,{withCredentials:true});
       navigate("/login");
       console.log(res);
     } catch (error) {
