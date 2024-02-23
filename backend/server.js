@@ -14,7 +14,7 @@ app.use(cookieParser())
 
 app.use(
   cors({
-    origin: ["https://food-delivery-website-frontend.vercel.app/"],
+    origin: ["https://food-delivery-website-frontend.vercel.app"],
     credentials:true
   })
 );
