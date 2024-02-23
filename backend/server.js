@@ -12,12 +12,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
-app.use(
-  cors({
-    origin: ["https://food-delivery-website-frontend.vercel.app", "https://food-delivery-website-lovat.vercel.app"],
-    credentials:true
-  })
-);
+const allowedOrigins = ['https://food-delivery-website-frontend.vercel.app'];
+app.use(cors({
+  origin: function(origin, callback) {
+    // Check if origin is allowed or it is undefined (in case of same-origin requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // Allow credentials
+}));
 app.use(bodyParser.json());
 
 app.use(route);
