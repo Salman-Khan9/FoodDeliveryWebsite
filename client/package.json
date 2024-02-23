@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.0",
@@ -26,6 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy" : "https://food-delivery-website-bay.vercel.app",
   "eslintConfig": {
     "extends": [
       "react-app",
