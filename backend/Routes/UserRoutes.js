@@ -76,6 +76,7 @@ route.get("/logout",async(req,res)=>{
 
    try {
     const token = req.cookies.token
+    
     res.cookie("token",token,{
       path : "/",
       httpOnly:true,
@@ -91,7 +92,7 @@ secure : true,})
             //secure : true,
             
           //})
-    return res.status(200).json("loggedout successfully")
+    return res.status(200).json(token,"token")
     } catch (error) {
     res.status(400).json(error)
         
