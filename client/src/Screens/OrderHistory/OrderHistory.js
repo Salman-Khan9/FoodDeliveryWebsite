@@ -52,7 +52,7 @@ const OrderHistory = () => {
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colSpan="4" style={{ textAlign: "right" }}>Total Price:</td>
+                                <td colSpan="4" style={{ textAlign: "right" }}>Total Amount:</td>
                                 <td style={{ backgroundColor: "lightblue" }}>{order.totalamount}</td>
                             </tr>
                         </tfoot>
