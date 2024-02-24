@@ -29,7 +29,7 @@ res.cookie("token",token,{
   expires : new Date(Date.now()+86400*1000),
   sameSite : "none",
   secure : true,
-  domain:"https://food-delivery-website-frontend.vercel.app"
+  domain:"food-delivery-website-frontend.vercel.app"
 })
     res.status(200).json({user,token});
   } catch (error) {
@@ -58,7 +58,7 @@ route.post("/login", async (req, res) => {
       expires : new Date(Date.now()+86400*1000),
 sameSite : "none",
 secure : true,
-domain:"https://food-delivery-website-frontend.vercel.app"})
+domain:"food-delivery-website-frontend.vercel.app"})
 
     
     if (user && passcheck) {
@@ -78,8 +78,8 @@ domain:"https://food-delivery-website-frontend.vercel.app"})
 route.get("/logout",async(req,res)=>{
 
    try {
-  path:"/",
-  res.cookie('token', '', { expires: new Date(0),path:"/",domain:"https://food-delivery-website-frontend.vercel.app" });
+  
+  res.cookie('token', '', { expires: new Date(0),path:"/",domain:"food-delivery-website-frontend.vercel.app" });
    // res.cookie("token",token,{
      // path : "/",
       //httpOnly:true,
