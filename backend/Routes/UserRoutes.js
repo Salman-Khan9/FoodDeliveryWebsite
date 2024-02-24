@@ -75,6 +75,7 @@ secure : true,})
 route.get("/logout",async(req,res)=>{
 
     try {
+      
       req.cookies.token = false
         res.cookie("token","",{
             path:"/",
