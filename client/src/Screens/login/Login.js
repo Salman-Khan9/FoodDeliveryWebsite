@@ -27,7 +27,7 @@ const dispatch = useDispatch()
 
      if(res.data=== process.env.REACT_APP_ADMIN_EMAIL ){
       dispatch(set_Adminloginstatus(true))
-      dispatch(set_loginstatus(false))
+      dispatch(set_loginstatus(true))
      }else{
        dispatch(set_loginstatus(true))
      }

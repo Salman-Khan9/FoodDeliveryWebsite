@@ -29,7 +29,7 @@ const Navbar = () => {
 
   }
   return (
-   <> {logged || Adminlogstatus?<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+   <> {logged ?<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
    <div className="container-fluid">
      <Link className="navbar-brand" to="/">
        Food Panda
@@ -92,7 +92,7 @@ const Navbar = () => {
  </nav>
 :<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 <div className="container-fluid">
-  <Link className="navbar-brand" to="/">
+  <Link className="navbar-brand" to="/Login">
     Food Panda
   </Link>
   <button
