@@ -12,7 +12,7 @@ const OrderHistory = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get("https://food-delivery-website-bay.vercel.app/orderhistory", { withCredentials: true });
+                const res = await axios.get("https://food-delivery-website-bay.vercel.app/orderhistory", { withCredentials: true,h });
                 setOrders(res.data);
             } catch (error) {
                 console.log(error);
@@ -50,9 +50,9 @@ const OrderHistory = () => {
                             ))}
 
                         </tbody>
+                    <h1 className=" fs-2"  style={{ backgroundColor: "lightblue" }}>Total Price: {Orders.reduce((acc, curr) => acc + curr.finalprice, 0)}</h1>
                         
                     </table>
-                    <h1 className=" fs-2"  style={{ backgroundColor: "lightblue" }}>Total Price: {Orders.reduce((acc, curr) => acc + curr.totalamount, 0)}</h1>
 
                 </div>
             ))}
