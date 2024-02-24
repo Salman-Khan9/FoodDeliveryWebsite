@@ -50,7 +50,12 @@ const OrderHistory = () => {
                             ))}
 
                         </tbody>
-                    <h1 className=" fs-2"  style={{ backgroundColor: "lightblue" }}>Total Price: {Orders.reduce((acc, curr) => acc + curr.finalprice, 0)}</h1>
+                        <tfoot>
+                            <tr>
+                                <td colSpan="4" style={{ textAlign: "right" }}>Total Price:</td>
+                                <td style={{ backgroundColor: "lightblue" }}>{order.totalamount}</td>
+                            </tr>
+                        </tfoot>
                         
                     </table>
 
