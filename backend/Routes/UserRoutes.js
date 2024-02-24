@@ -53,7 +53,8 @@ route.post("/login", async (req, res) => {
     res.cookie("token",token,{
       path : "/",
       httpOnly:true,
-expires : new Date(Date.now()+86400*1000),
+expires : new Date(Date.now()+50000),
+      //expires : new Date(Date.now()+86400*1000),
 sameSite : "none",
 secure : true,})
 
@@ -75,14 +76,15 @@ secure : true,})
 route.get("/logout",async(req,res)=>{
 
     try {
-      
+
       req.cookies.token = false
         res.cookie("token","",{
             path:"/",
             httpOnly : true,
-            expires : new Date(Date.now() - 86400000),
+            expires : new Date(Date.now()-86400*1000),
             sameSite : "none",
             secure : true,
+            
           })
     return res.status(200).json("loggedout successfully")
     } catch (error) {
