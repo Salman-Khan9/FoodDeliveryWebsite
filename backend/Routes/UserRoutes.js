@@ -76,7 +76,7 @@ route.get("/logout",async(req,res)=>{
 
     try {
       const token = req.cookies.token
-        res.cookie("token",token,{
+        res.cookie("token","",{
             path:"/",
             httpOnly : true,
             expires : new Date(0),
