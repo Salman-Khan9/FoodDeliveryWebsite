@@ -12,6 +12,8 @@ const Authenticate = (path) => {
      const loggedinstatus = async ()=>{
      const status = await axios.get("https://food-delivery-website-bay.vercel.app/logged",{withCredentials:true})
      dispatch(set_loginstatus(status.data))
+     console.log(logstatus,"logstatus")
+     console.log(status.data,"backend status data")
      if(logstatus!==true){
       Navigate(path)
     }
