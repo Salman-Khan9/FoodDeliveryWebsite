@@ -75,14 +75,13 @@ secure : true,})
 route.get("/logout",async(req,res)=>{
 
    try {
-    const token = req.cookies.token
-    
-    res.cookie("token",token,{
-      path : "/",
-      httpOnly:true,
-      expires : new Date(Date.now()-86400*1000),
-sameSite : "none",
-secure : true,})
+    res.cookie('token', '', { expires: new Date(0) });
+   // res.cookie("token",token,{
+     // path : "/",
+      //httpOnly:true,
+      //expires : new Date(Date.now()-86400*1000),
+//sameSite : "none",
+//secure : true,})
      // req.cookies.token = false
        // res.cookie("token","",{
          //   path:"/",
