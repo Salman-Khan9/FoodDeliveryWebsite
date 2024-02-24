@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialstate = {
   logstatus: false,
-  Adminlogstatus: JSON.parse(localStorage.getItem('Adminlogstatus')) || false
+  Adminlogstatus:  false
 };
 
 const authslice = createSlice({
@@ -13,7 +13,6 @@ const authslice = createSlice({
       state.logstatus = action.payload
     },set_Adminloginstatus(state, action) {
       state.Adminlogstatus = action.payload;
-      localStorage.setItem('Adminlogstatus', JSON.stringify(action.payload));
     },
    
     

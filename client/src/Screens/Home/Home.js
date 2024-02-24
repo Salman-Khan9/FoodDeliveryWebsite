@@ -5,6 +5,7 @@ import axios from "axios";
 import Authenticate from "../../authentication/Auth";
 const Home = () => {
   Authenticate("/Login")
+  
   const [fooditems, setfooditems] = useState([]);
   const [foodcategory, setfoodcategory] = useState([]);
   useEffect(() => {
