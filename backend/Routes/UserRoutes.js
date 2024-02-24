@@ -92,7 +92,7 @@ secure : true,})
             //secure : true,
             
           //})
-    return res.json(token,"token")
+    return res.status(200).json("logged out successfully")
     } catch (error) {
     res.status(400).json(error)
         
