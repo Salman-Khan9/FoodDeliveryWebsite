@@ -92,7 +92,7 @@ route.get("/logged",async(req,res)=>{
   try {
     const token = req.cookies.token
     if(!token){
-      return res.json(false)
+      return res.status(400).json(false)
     }
     const verify = jwt.verify(token,process.env.SECRET_KEY)
     if (verify){

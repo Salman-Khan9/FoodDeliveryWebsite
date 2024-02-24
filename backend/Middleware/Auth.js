@@ -6,7 +6,7 @@ const Auth = async (req,res,next)=>{
         const token = req.cookies.token
         console.log(token)
         if(!token){
-            res.json("not authorized ,please login")
+            res.status(400).json("not authorized ,please login")
         }
             const verify = await jwt.verify(token,process.env.SECRET_KEY)
         const userinfo = await User.findById(verify.id).select("-password")
