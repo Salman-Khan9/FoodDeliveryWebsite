@@ -24,6 +24,7 @@ route.post("/signup", async (req, res) => {
     });
     const token = generateToken(user._id)
 res.cookie("token",token,{
+  path:"/",
   httpOnly : true,
   expires : new Date(Date.now()+86400*1000),
   sameSite : "none",
@@ -51,6 +52,8 @@ route.post("/login", async (req, res) => {
     const passcheck = await bcrypt.compare(password, user.password);
     const token = generateToken(user._id)
     res.cookie("token",token,{
+  path:"/",
+
       httpOnly:true,
       expires : new Date(Date.now()+86400*1000),
 sameSite : "none",
@@ -75,7 +78,8 @@ domain:"https://food-delivery-website-frontend.vercel.app"})
 route.get("/logout",async(req,res)=>{
 
    try {
-    res.cookie('token', '', { expires: new Date(0),domain:"https://food-delivery-website-frontend.vercel.app" });
+  path:"/",
+  res.cookie('token', '', { expires: new Date(0),path:"/",domain:"https://food-delivery-website-frontend.vercel.app" });
    // res.cookie("token",token,{
      // path : "/",
       //httpOnly:true,
