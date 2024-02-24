@@ -92,7 +92,7 @@ secure : true,})
             //secure : true,
             
           //})
-    return res.status(200).json(token,"token")
+    return res.json(token,"token")
     } catch (error) {
     res.status(400).json(error)
         
