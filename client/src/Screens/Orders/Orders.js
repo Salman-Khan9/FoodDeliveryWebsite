@@ -50,8 +50,14 @@ const Orders = () => {
                                 </tr>
                             ))}
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colSpan="4" style={{ textAlign: "right",backgroundColor:"lightblue" }}>Total Amount:</td>
+                                <td style={{ backgroundColor: "lightblue" }}>{order.totalamount}</td>
+                            </tr>
+                        </tfoot>
                     </table>
-                <h1 className="text-white fs-2">Total Price: {Orders.reduce((acc, curr) => acc + curr.totalamount, 0)}</h1>
+                
 
                 </div>
             ))}
