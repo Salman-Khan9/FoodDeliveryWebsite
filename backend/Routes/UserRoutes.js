@@ -73,8 +73,10 @@ secure : true,})
 })
 
 route.get("/logout",async(req,res)=>{
+
     try {
-        res.cookie("token","",{
+      const token = req.cookies.token
+        res.cookie("token",token,{
             path:"/",
             httpOnly : true,
             expires : new Date(0),
@@ -92,7 +94,7 @@ route.get("/logged",async(req,res)=>{
   try {
     const token = req.cookies.token
     if(!token){
-      return res.status(400).json(false)
+      return res.json(false)
     }
     const verify = jwt.verify(token,process.env.SECRET_KEY)
     if (verify){
