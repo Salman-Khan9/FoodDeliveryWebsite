@@ -56,7 +56,7 @@ const OrderHistory = () => {
                                 <td style={{ backgroundColor: "lightblue" }}>{order.totalamount}</td>
                             </tr>
                         </tfoot>
-                        
+            
                     </table>
 
                 </div>
