@@ -75,29 +75,27 @@ secure : true,
   }
 })
 
-route.post("/logout",async(req,res)=>{
+route.get("/logout",async(req,res)=>{
 
    try {
-    const token = req.cookies.token
-res.clearCookie('token', {path:'/'})
- // res.cookie('token', "", { expires: new Date.now(0),path:"/",secure:true,sameSite:"none" ,domain:"food-delivery-website-bay.vercel.app" });
+  
+  res.cookie('token', '', { expires: new Date(0),path:"/",secure:true,sameSite:"none" });
    // res.cookie("token",token,{
      // path : "/",
-      //domain : "food-delivery-website-frontend.vercel.app",
-     // httpOnly:true,
-     // expires : new Date(Date.now()-86400*1000),
+      //httpOnly:true,
+      //expires : new Date(Date.now()-86400*1000),
 //sameSite : "none",
 //secure : true,})
      // req.cookies.token = false
-       res.cookie("token","",{
-            path:"/",
-            httpOnly : true,
-            expires : new Date(Date.now()-86400*1000),
-            sameSite : "none",
-            secure : true,
-          })
-
-    return res.status(200).json("logged out")
+       // res.cookie("token","",{
+         //   path:"/",
+           // httpOnly : true,
+            //expires : new Date(Date.now()-86400*1000),
+            //sameSite : "none",
+            //secure : true,
+            
+          //})
+    return res.status(200).json("logged out successfully")
     } catch (error) {
     res.status(400).json(error)
         
