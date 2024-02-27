@@ -77,7 +77,12 @@ secure : true,
 
 route.delete('/logout', (req, res) => {
   if (req.session) {
-    req.session.destroy(() => {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error(err.message);
+        return res.status(500).send('Internal Server Error');
+      }
+
       res.clearCookie(req.cookies[session.name].name, {
         path: req.cookies[session.name].path,
         httpOnly: req.cookies[session.name].httpOnly,
