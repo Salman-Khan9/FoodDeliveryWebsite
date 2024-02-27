@@ -15,12 +15,20 @@ const scheme = new mongoose.Schema({
   location: {
     latitude: {
       type: Number,
-      required: true,
+      required: function() {
+        return !this.formattedAddress; // Latitude is required if formattedAddress is not provided
+      }
     },
     longitude: {
       type: Number,
-      required: true,
+      required: function() {
+        return !this.formattedAddress; // Longitude is required if formattedAddress is not provided
+      }
     },
+    formattedAddress: {
+      type: String
+    }
+  
   },
   date: { type: Date, default: Date.now },
 });
