@@ -92,7 +92,7 @@ route.get("/logout",async(req,res)=>{
 
       }
     });
-  //try {
+  //try { 
     //res.clearCookie("token", {
      // path: "/",
       //secure: true,
