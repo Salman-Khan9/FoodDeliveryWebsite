@@ -14,7 +14,7 @@ const Authenticate = (path) => {
      dispatch(set_loginstatus(status.data))
      console.log(logstatus,"logstatus")
      console.log(status.data,"backend status data")
-     if(logstatus!==true){
+     if(status!==true){
       Navigate(path)
     }
     }
