@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import Home from "./Screens/Home/Home";
 import Login from "./Screens/login/Login";
 import Signup from "./Screens/signup/Signup";
@@ -14,13 +15,14 @@ function App() {
       <Router>
         <Navbar></Navbar>
         <Routes>
-          
+          <ToastContainer>
           <Route  path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/AddFoodItem" element={<AddFoodItem />} />
           <Route path="/Orderhistory" element={<OrderHistory />} />
           <Route path="/Orders" element={<Orders />} />
+          </ToastContainer>
         </Routes>
       </Router>
     </div>
