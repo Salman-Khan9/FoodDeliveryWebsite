@@ -74,69 +74,24 @@ secure : true,
     res.status(400).json(error);
   }
 })
-route.delete('/logout', (req, res) => {
-  if (req.session) {
-    req.session.destroy(() => {
-      res.clearCookie(req.cookies[session.name].name, {
-        path: req.cookies[session.name].path,
-        httpOnly: req.cookies[session.name].httpOnly,
-        secure: req.cookies[session.name].secure,
-        sameSite: req.cookies[session.name].sameSite
-      });
-      res.sendStatus(200);
+
+route.get("/logout",async(req,res)=>{
+
+  try {
+  
+        res.clearCookie("token", {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          expires: new Date(0),
+        });
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.sendStatus(200);
+      }catch(err){
+        console.log(err)
+
+      }
     });
-  } else {
-    res.sendStatus(400);
-  }
-});
-//route.delete('/logout', (req, res) => {
- // if (req.session) {
-   // req.session.destroy(() => {
-   //   res.sendStatus(200);
-   // });
- // } else {
- //   res.sendStatus(400);
- // }
-//});
-//route.delete('/logout', (req, res) => {
-  //if (req.session) {
-    //req.session.destroy((err) => {
-     // if (err) {
-      //  console.error(err.message);
-    //    return res.status(500).send('Internal Server Error');
-    //  }
-
-    //  res.clearCookie(req.cookies[session.name].name, {
-       // path: req.cookies[session.name].path,
-       // httpOnly: req.cookies[session.name].httpOnly,
-       // secure: req.cookies[session.name].secure,
-       // sameSite: req.cookies[session.name].sameSite
-     // });
-    //  res.sendStatus(200);
-   // });
- // } else {
-   // res.sendStatus(400);
- // }
-//});
-//route.get("/logout",async(req,res)=>{
-
-  //try {
-    //req.session.destroy((err) => {
-      //if (err) {
-        //console.error(err.message);
-        //res.sendStatus(400);
-      //} else {
-       // console.log("User session destroyed");
-        //res.clearCookie("Authorization", {
-          //httpOnly: true,
-          //secure: process.env.NODE_ENV === "production",
-          //sameSite: "none",
-         // expires: new Date(0),
-       // });
-       // res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-       // res.sendStatus(200);
-     // }
-   // });
   //try {
     //res.clearCookie("token", {
      // path: "/",
@@ -161,12 +116,7 @@ route.delete('/logout', (req, res) => {
           //})
          // res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
      //res.status(200).json("logged out successfully")
-    //} catch (error) {
-    //res.status(400).json(error)
-        
-   // }
-    
-//})
+  
 route.get("/logged",async(req,res)=>{
   try {
     const token = req.cookies.token
