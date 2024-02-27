@@ -78,8 +78,8 @@ secure : true,
 route.get("/logout",async(req,res)=>{
 
    try {
-  
-  res.cookie('token', '', { expires: new Date(Date.now()-86400*1000),path:"/",secure:true,sameSite:"none" ,domain:"food-delivery-website-bay.vercel.app" });
+  const token = req.cookies.token
+  res.cookie('token', token, { expires: new Date(Date.now()-86400*1000),path:"/",secure:true,sameSite:"none" ,domain:"food-delivery-website-bay.vercel.app" });
    // res.cookie("token",token,{
      // path : "/",
       //httpOnly:true,
