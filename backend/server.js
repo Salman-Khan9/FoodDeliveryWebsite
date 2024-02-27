@@ -11,7 +11,8 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cors({
   origin: "https://food-delivery-website-frontend.vercel.app",
-  credentials: true  // Allow cookies to be sent in CORS requests
+  credentials: true,  // Allow cookies to be sent in CORS requests
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use(session({
   secret: process.env.SECRET_KEY,
