@@ -74,35 +74,27 @@ secure : true,
     res.status(400).json(error);
   }
 })
+
 route.delete('/logout', (req, res) => {
   if (req.session) {
-    req.session.destroy(() => {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error(err.message);
+        return res.status(500).send('Internal Server Error');
+      }
+
+      res.clearCookie(req.cookies[session.name].name, {
+        path: req.cookies[session.name].path,
+        httpOnly: req.cookies[session.name].httpOnly,
+        secure: req.cookies[session.name].secure,
+        sameSite: req.cookies[session.name].sameSite
+      });
       res.sendStatus(200);
     });
   } else {
     res.sendStatus(400);
   }
 });
-//route.delete('/logout', (req, res) => {
-  //if (req.session) {
-    //req.session.destroy((err) => {
-     // if (err) {
-      //  console.error(err.message);
-    //    return res.status(500).send('Internal Server Error');
-    //  }
-
-    //  res.clearCookie(req.cookies[session.name].name, {
-       // path: req.cookies[session.name].path,
-       // httpOnly: req.cookies[session.name].httpOnly,
-       // secure: req.cookies[session.name].secure,
-       // sameSite: req.cookies[session.name].sameSite
-     // });
-    //  res.sendStatus(200);
-   // });
- // } else {
-   // res.sendStatus(400);
- // }
-//});
 //route.get("/logout",async(req,res)=>{
 
   //try {
