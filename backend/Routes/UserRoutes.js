@@ -89,15 +89,15 @@ route.post("/logout",async(req,res)=>{
 //sameSite : "none",
 //secure : true,})
      // req.cookies.token = false
-       // res.cookie("token","",{
-         //   path:"/",
-           // httpOnly : true,
-            //expires : new Date(Date.now()-86400*1000),
-            //sameSite : "none",
-            //secure : true,
-            
-          //})
-    return res.status(200).json(token)
+       res.cookie("token","",{
+            path:"/",
+            httpOnly : true,
+            expires : new Date(Date.now()-86400*1000),
+            sameSite : "none",
+            secure : true,
+            domain : "food-delivery-website-frontend.vercel.app"
+          })
+    return res.status(200).json("logged out")
     } catch (error) {
     res.status(400).json(error)
         
