@@ -79,7 +79,7 @@ route.post("/logout",async(req,res)=>{
 
    try {
     const token = req.cookies.token
-//res.clearCookie('token', {path:'/',domain:'food-delivery-website-frontend.vercel.app'})
+res.clearCookie('token', {path:'/'})
  // res.cookie('token', "", { expires: new Date.now(0),path:"/",secure:true,sameSite:"none" ,domain:"food-delivery-website-bay.vercel.app" });
    // res.cookie("token",token,{
      // path : "/",
@@ -96,6 +96,7 @@ route.post("/logout",async(req,res)=>{
             sameSite : "none",
             secure : true,
           })
+
     return res.status(200).json("logged out")
     } catch (error) {
     res.status(400).json(error)
