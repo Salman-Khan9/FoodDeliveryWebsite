@@ -3,6 +3,7 @@ import Carousel from "../../components/carousel/Carousel";
 import Card from "../../components/card/Card";
 import axios from "axios";
 import Authenticate from "../../authentication/Auth";
+import { toast } from "react-toastify";
 const Home = () => {
   Authenticate("/Login")
   
@@ -11,6 +12,8 @@ const Home = () => {
   useEffect(() => {
 
     axios.get("https://food-delivery-website-bay.vercel.app/food/items",{withCredentials:true}).then((data) => {
+      toast.loading("Loading...")
+
       setfooditems(data.data[0] );
       setfoodcategory(data.data[1] );
     });

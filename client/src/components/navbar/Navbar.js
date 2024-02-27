@@ -8,6 +8,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { Badge } from "react-bootstrap";
 import axios from "axios"
 import { selectAdminloginstatus, selectloginstatus, set_Adminloginstatus, set_loginstatus } from "../../Redux/Slices/Authslice";
+import { toast } from "react-toastify";
 const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,10 +19,13 @@ const Navbar = () => {
   const handlelogout = async()=>{
     try {
    await axios.get("https://food-delivery-website-bay.vercel.app/logout",{withCredentials:true,})
+toast.loading("LoggingOut...")
      dispatch(set_loginstatus(false))
      dispatch(set_Adminloginstatus(false))
      dispatch(delete_items())
      navigate("/Login")
+   toast.success("LoggedOut Successfully")
+
 
     } catch (error) {
       console.log(error)

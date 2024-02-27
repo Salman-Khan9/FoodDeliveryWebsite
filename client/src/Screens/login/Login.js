@@ -5,6 +5,8 @@ import { useDispatch} from "react-redux";
 import {  set_Adminloginstatus, set_loginstatus } from "../../Redux/Slices/Authslice";
 import "../login/Login.css"
 import Footer from "../../components/footer/Footer";
+import {toast } from 'react-toastify';
+
 const Login = () => {
   const navigate = useNavigate();
 const dispatch = useDispatch()
@@ -23,14 +25,17 @@ const dispatch = useDispatch()
     e.preventDefault();
     try {
      const res =  await axios.post("https://food-delivery-website-bay.vercel.app/login", formdata,{withCredentials:true});
-     console.log(res.data)
-
+     toast.loading("loggin in...")
      if(res.data=== process.env.REACT_APP_ADMIN_EMAIL ){
       dispatch(set_Adminloginstatus(true))
       dispatch(set_loginstatus(true))
+      toast.success("Logged in Successfully")
      }else{
        dispatch(set_loginstatus(true))
+      toast.success("Logged in Successfully")
+
      }
+     toast.error("Please Enter Valid Cradentials")
       navigate("/");
     } catch (error) {
       console.log(error);

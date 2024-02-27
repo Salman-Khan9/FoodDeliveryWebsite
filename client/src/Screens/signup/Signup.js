@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import "../signup/signup.css"
 import Footer from "../../components/footer/Footer";
+import {toast } from 'react-toastify';
+
 const Signup = () => {
   const navigate = useNavigate();
   const Apikey = process.env.REACT_APP_OPENCAGE_API_KEY;
@@ -70,10 +72,14 @@ const Signup = () => {
   const handleonsubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://food-delivery-website-bay.vercel.app/signup", payload,{withCredentials:true});
+       await axios.post("https://food-delivery-website-bay.vercel.app/signup", payload,{withCredentials:true});
+     toast.loading("Singinng Up...")
+      
       navigate("/login");
-      console.log(res);
+      toast.success("Registered Successfully")
+
     } catch (error) {
+      toast.error("Please fill all fields")
       console.log(error);
     }
   };

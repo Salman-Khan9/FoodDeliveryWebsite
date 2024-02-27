@@ -13,6 +13,8 @@ const OrderHistory = () => {
         const fetchOrders = async () => {
             try {
                 const res = await axios.get("https://food-delivery-website-bay.vercel.app/orderhistory", { withCredentials: true });
+                   toast.loading("Loading Order History...")
+
                 setOrders(res.data);
             } catch (error) {
                 console.log(error);

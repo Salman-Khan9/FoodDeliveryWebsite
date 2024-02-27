@@ -4,6 +4,8 @@ import {
   delete_items,
   selectitems,
 } from "../../Redux/Slices/ItemsSlice";
+import {toast } from 'react-toastify';
+
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Authenticate from "../../authentication/Auth";
@@ -27,8 +29,9 @@ const Cart = () => {
     try {
       if (payload.length > 0) {
         await axios.post("https://food-delivery-website-bay.vercel.app/order", payload,{withCredentials:true});
-
+        toast.loading("Placing Order...")
         dispatch(delete_items());
+        toast.success("Orderd Taken")
       } else {
         console.log("error");
       }

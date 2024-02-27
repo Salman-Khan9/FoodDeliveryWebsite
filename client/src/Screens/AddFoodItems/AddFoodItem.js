@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import AdminAuth from "../../authentication/AdminAuth";
 import Footer from "../../components/footer/Footer";
+import {toast } from 'react-toastify';
 const AddFoodItem = () => {
   AdminAuth("/")
   const initialvalue = {
@@ -39,6 +40,10 @@ const AddFoodItem = () => {
     e.preventDefault();
     try {
       await axios.post("https://food-delivery-website-bay.vercel.app/add/food/items", formdata,{withCredentials:true});
+      toast.loading("Adding Item...")
+
+      setdata(initialvalue)
+      toast.success("Item Added Successfully")
     } catch (error) {
       console.log(error);
     }
