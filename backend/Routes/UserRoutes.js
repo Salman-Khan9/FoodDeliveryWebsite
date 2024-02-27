@@ -78,14 +78,15 @@ secure : true,
 route.post("/logout",async(req,res)=>{
 
    try {
+    const token = req.cookies.token
 //res.clearCookie('token', {path:'/',domain:'food-delivery-website-frontend.vercel.app'})
-  res.cookie('token', "", { expires: new Date.now(0),path:"/",secure:true,sameSite:"none" ,domain:"food-delivery-website-bay.vercel.app" });
-   // res.cookie("token",token,{
-     // path : "/",
-      //httpOnly:true,
-      //expires : new Date(Date.now()-86400*1000),
-//sameSite : "none",
-//secure : true,})
+ // res.cookie('token', "", { expires: new Date.now(0),path:"/",secure:true,sameSite:"none" ,domain:"food-delivery-website-bay.vercel.app" });
+    res.cookie("token",token,{
+      path : "/",
+      httpOnly:true,
+      expires : new Date(Date.now()-86400*1000),
+sameSite : "none",
+secure : true,})
      // req.cookies.token = false
        // res.cookie("token","",{
          //   path:"/",
