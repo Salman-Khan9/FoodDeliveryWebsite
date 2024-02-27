@@ -13,6 +13,12 @@ app.use(cors({
   origin: "https://food-delivery-website-frontend.vercel.app",
   credentials: true  // Allow cookies to be sent in CORS requests
 }));
+app.use(session({
+  secret: process.env.SECRET_KEY,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
