@@ -74,26 +74,38 @@ secure : true,
     res.status(400).json(error);
   }
 })
-
-route.get("/logout",async(req,res)=>{
-
-  try {
-    req.session.destroy((err) => {
+route.delete('/api/auth/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
       if (err) {
-        console.error(err.message);
-        res.sendStatus(400);
+        res.status(400).send('Unable to log out');
       } else {
-        console.log("User session destroyed");
-        res.clearCookie("Authorization", {
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-          sameSite: "none",
-          expires: new Date(0),
-        });
-        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-        res.sendStatus(200);
+        res.send('Logout successful');
       }
     });
+  } else {
+    res.send('No session to destroy');
+  }
+});
+//route.get("/logout",async(req,res)=>{
+
+  //try {
+    //req.session.destroy((err) => {
+      //if (err) {
+        //console.error(err.message);
+        //res.sendStatus(400);
+      //} else {
+       // console.log("User session destroyed");
+        //res.clearCookie("Authorization", {
+          //httpOnly: true,
+          //secure: process.env.NODE_ENV === "production",
+          //sameSite: "none",
+         // expires: new Date(0),
+       // });
+       // res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+       // res.sendStatus(200);
+     // }
+   // });
   //try {
     //res.clearCookie("token", {
      // path: "/",
@@ -118,12 +130,12 @@ route.get("/logout",async(req,res)=>{
           //})
          // res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
      //res.status(200).json("logged out successfully")
-    } catch (error) {
-    res.status(400).json(error)
+    //} catch (error) {
+    //res.status(400).json(error)
         
-    }
+   // }
     
-})
+//})
 route.get("/logged",async(req,res)=>{
   try {
     const token = req.cookies.token
