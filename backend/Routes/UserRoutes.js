@@ -75,7 +75,7 @@ secure : true,
   }
 })
 
-route.delete('/api/auth/logout', (req, res) => {
+route.delete('/logout', (req, res) => {
   if (req.session) {
     req.session.destroy(() => {
       res.clearCookie(session.name, {
