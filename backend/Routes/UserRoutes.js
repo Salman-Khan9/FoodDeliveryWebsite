@@ -77,9 +77,13 @@ secure : true,
 
 route.get("/logout",async(req,res)=>{
 
-   try {
-  
-  res.cookie('token', '', { expires: new Date(0),path:"/",secure:true,sameSite:"none" });
+  try {
+    res.clearCookie("token", {
+      path: "/",
+      secure: true,
+      sameSite: "none",
+      maxAge: 0, // Set maxAge to 0 to delete the cookie
+    });
    // res.cookie("token",token,{
      // path : "/",
       //httpOnly:true,
