@@ -95,7 +95,6 @@ route.post("/logout",async(req,res)=>{
             expires : new Date(Date.now()-86400*1000),
             sameSite : "none",
             secure : true,
-            domain : "food-delivery-website-frontend.vercel.app"
           })
     return res.status(200).json("logged out")
     } catch (error) {
