@@ -78,12 +78,29 @@ secure : true,
 route.get("/logout",async(req,res)=>{
 
   try {
-    res.clearCookie("token", {
-      path: "/",
-      secure: true,
-      sameSite: "none",
-      expires: new Date(0),
+    req.session.destroy((err) => {
+      if (err) {
+        console.error(err.message);
+        res.sendStatus(400);
+      } else {
+        console.log("User session destroyed");
+        res.clearCookie("Authorization", {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "none",
+          expires: new Date(0),
+        });
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.sendStatus(200);
+      }
     });
+  //try {
+    //res.clearCookie("token", {
+     // path: "/",
+      //secure: true,
+      //sameSite: "none",
+      //expires: new Date(0),
+    //});
    // res.cookie("token",token,{
      // path : "/",
       //httpOnly:true,
@@ -99,8 +116,8 @@ route.get("/logout",async(req,res)=>{
             //secure : true,
             
           //})
-          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-     res.status(200).json("logged out successfully")
+         // res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+     //res.status(200).json("logged out successfully")
     } catch (error) {
     res.status(400).json(error)
         
