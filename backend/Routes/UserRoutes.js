@@ -99,7 +99,8 @@ route.get("/logout",async(req,res)=>{
             //secure : true,
             
           //})
-    return res.status(200).json("logged out successfully")
+          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+     res.status(200).json("logged out successfully")
     } catch (error) {
     res.status(400).json(error)
         
