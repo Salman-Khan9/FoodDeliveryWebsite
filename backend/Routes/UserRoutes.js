@@ -75,10 +75,10 @@ secure : true,
   }
 })
 
-route.get("/logout",async(req,res)=>{
+route.post("/logout",async(req,res)=>{
 
    try {
-res.clearCookie('token', {path:'/',domain:'.food-delivery-website-bay.vercel.app'})
+res.clearCookie('token', {path:'/',domain:'food-delivery-website-bay.vercel.app'})
   //res.cookie('token', "", { expires: Date.now(),path:"/",secure:true,sameSite:"none" ,domain:"food-delivery-website-bay.vercel.app" });
    // res.cookie("token",token,{
      // path : "/",
