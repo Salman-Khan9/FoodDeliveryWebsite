@@ -51,11 +51,11 @@ route.post("/login", async (req, res) => {
     }
     const passcheck = await bcrypt.compare(password, user.password);
     const token = generateToken(user._id)
+    const exp = Date.now() + 1000 * 60 * 60 * 24 * 30; // 30 days
     res.cookie("token",token,{
   path:"/",
-
+  expires: new Date(exp),
       httpOnly:true,
-      expires : new Date(Date.now()+86400*1000),
 sameSite : "none",
 secure : true,
 })
@@ -82,7 +82,7 @@ route.get("/logout",async(req,res)=>{
       path: "/",
       secure: true,
       sameSite: "none",
-      maxAge: 0, // Set maxAge to 0 to delete the cookie
+      expires: new Date(0),
     });
    // res.cookie("token",token,{
      // path : "/",
