@@ -9,11 +9,22 @@ const session = require("express-session")
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
-app.use(cors({
-  origin: "https://food-delivery-website-frontend.vercel.app",
-  credentials: true,  // Allow cookies to be sent in CORS requests
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-}));
+//app.use(cors({
+  //origin: "https://food-delivery-website-frontend.vercel.app",
+  //credentials: true,  // Allow cookies to be sent in CORS requests
+  //methods: ['GET', 'POST', 'PUT', 'DELETE']
+//}));
+const corsOptions = {
+  origin: 'https://food-delivery-website-frontend.vercel.app',
+  credentials: true,
+  optionsSuccessStatus: 200,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposeHeaders: ['Content-Length'],
+  maxAge: 3600,
+  preflightContinue: false,
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE']
+};
+app.use(cors(corsOptions));
 app.use(session({
   secret: process.env.SECRET_KEY,
   resave: false,
