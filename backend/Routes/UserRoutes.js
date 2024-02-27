@@ -78,11 +78,11 @@ secure : true,
 route.delete('/logout', (req, res) => {
   if (req.session) {
     req.session.destroy(() => {
-      res.clearCookie(session.name, {
-        path: session.get('token').path,
-        httpOnly: session.get('token').httpOnly,
-        secure: session.get('token').secure,
-        sameSite: session.get('token').sameSite
+      res.clearCookie(req.cookies[session.name].name, {
+        path: req.cookies[session.name].path,
+        httpOnly: req.cookies[session.name].httpOnly,
+        secure: req.cookies[session.name].secure,
+        sameSite: req.cookies[session.name].sameSite
       });
       res.sendStatus(200);
     });
