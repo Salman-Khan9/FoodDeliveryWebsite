@@ -74,17 +74,20 @@ secure : true,
     res.status(400).json(error);
   }
 })
+
 route.delete('/api/auth/logout', (req, res) => {
   if (req.session) {
-    req.session.destroy(err => {
-      if (err) {
-        res.status(400).send('Unable to log out');
-      } else {
-        res.send('Logout successful');
-      }
+    req.session.destroy(() => {
+      res.clearCookie(session.name, {
+        path: session.get('token').path,
+        httpOnly: session.get('token').httpOnly,
+        secure: session.get('token').secure,
+        sameSite: session.get('token').sameSite
+      });
+      res.sendStatus(200);
     });
   } else {
-    res.send('No session to destroy');
+    res.sendStatus(400);
   }
 });
 //route.get("/logout",async(req,res)=>{
