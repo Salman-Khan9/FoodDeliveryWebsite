@@ -36,7 +36,7 @@ const Navbar = () => {
    <> {logged || Adminlogstatus ?<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
    <div className="container-fluid">
      <Link className="navbar-brand" to="/">
-      <img  style={{mixBlendMode:"color-burn",color:"white"}} src={fireimg} height="35px" alt="img"/>
+      <img  style={{mixBlendMode:"multiply",color:"white"}} src={fireimg} height="35px" alt="img"/>
        Food Hunter
      </Link>
      <button
@@ -98,7 +98,7 @@ const Navbar = () => {
 :<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 <div className="container-fluid">
   <Link className="navbar-brand" to="/Login">
-  <img style={{mixBlendMode:"color-burn",color:"white"}} src={fireimg} height="35px" alt="img"/>
+  <img style={{mixBlendMode:"multiply",color:"white"}} src={fireimg} height="35px" alt="img"/>
 
     Food Hunter
   </Link>
