@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { delete_items, selectitems } from "../../Redux/Slices/ItemsSlice";
 import Modal from "../../Modal/Modal";
+import fireimg from "../images/fire.avif"
 import Cart from "../../Screens/Cart/Cart";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Badge } from "react-bootstrap";
@@ -36,7 +37,8 @@ toast.loading("LoggingOut...")
    <> {logged || Adminlogstatus ?<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
    <div className="container-fluid">
      <Link className="navbar-brand" to="/">
-       Food Panda
+      <img src={fireimg} height="50px" alt="img"/>
+       Food Hunter
      </Link>
      <button
        className="navbar-toggler"
@@ -97,7 +99,9 @@ toast.loading("LoggingOut...")
 :<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 <div className="container-fluid">
   <Link className="navbar-brand" to="/Login">
-    Food Panda
+  <img src={fireimg} height="50px" alt="img"/>
+
+    Food Hunter
   </Link>
   <button
     className="navbar-toggler"
