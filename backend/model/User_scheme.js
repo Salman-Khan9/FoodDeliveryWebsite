@@ -13,8 +13,17 @@ const scheme = new mongoose.Schema({
     required: true,
   },
   location: {
-    type: mongoose.Schema.Types.Mixed,
-    required: false
+    latitude: {
+      type: Number,
+      
+    },
+    longitude: {
+      type: Number,
+     
+    },
+    formattedAddress: {
+      type: String
+    }
   
   },
   date: { type: Date, default: Date.now },
