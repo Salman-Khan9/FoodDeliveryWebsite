@@ -74,7 +74,7 @@ const Signup = () => {
     try {
        await axios.post("https://food-hunter-website-server.vercel.app/signup", payload,{withCredentials:true});
       
-      navigate("/login");
+      navigate("/");
       toast.success("Registered Successfully")
 
     } catch (error) {
