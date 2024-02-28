@@ -34,7 +34,6 @@ const dispatch = useDispatch()
       toast.success("Logged in Successfully")
 
      }
-     toast.error("Please Enter Valid Cradentials")
       navigate("/");
     } catch (error) {
       console.log(error);
