@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { delete_items, selectitems } from "../../Redux/Slices/ItemsSlice";
 import Modal from "../../Modal/Modal";
-import fireimg from "../images/fire.jpg"
 import Cart from "../../Screens/Cart/Cart";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Badge } from "react-bootstrap";
@@ -36,7 +35,6 @@ const Navbar = () => {
    <> {logged || Adminlogstatus ?<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
    <div className="container-fluid">
      <Link className="navbar-brand" to="/">
-      <img   src={fireimg} height="35px" alt="img"/>
        Food Hunter
      </Link>
      <button
@@ -98,7 +96,6 @@ const Navbar = () => {
 :<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 <div className="container-fluid">
   <Link className="navbar-brand" to="/Login">
-  <img  src={fireimg} height="35px" alt="img"/>
 
     Food Hunter
   </Link>
