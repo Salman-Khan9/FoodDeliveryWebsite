@@ -34,7 +34,7 @@ const dispatch = useDispatch()
       toast.success("Logged in Successfully")
 
      }
-      navigate("/");
+      navigate("/"); 
     } catch (error) {
       console.log(error);
     }
