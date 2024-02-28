@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { delete_items, selectitems } from "../../Redux/Slices/ItemsSlice";
 import Modal from "../../Modal/Modal";
-import fireimg from "../images/fire.avif"
+import fireimg from "../images/fire.jpg"
 import Cart from "../../Screens/Cart/Cart";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Badge } from "react-bootstrap";
