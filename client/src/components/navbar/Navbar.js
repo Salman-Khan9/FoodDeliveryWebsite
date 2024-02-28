@@ -20,7 +20,6 @@ const Navbar = () => {
   const handlelogout = async()=>{
     try {
    await axios.get("https://food-hunter-website-server.vercel.app/logout",{withCredentials:true,})
-toast.loading("LoggingOut...")
      dispatch(set_loginstatus(false))
      dispatch(set_Adminloginstatus(false))
      dispatch(delete_items())

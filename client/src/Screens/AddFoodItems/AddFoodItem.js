@@ -40,7 +40,6 @@ const AddFoodItem = () => {
     e.preventDefault();
     try {
       await axios.post("https://food-hunter-website-server.vercel.app/add/food/items", formdata,{withCredentials:true});
-      toast.loading("Adding Item...")
 
       setdata(initialvalue)
       toast.success("Item Added Successfully")

@@ -12,7 +12,6 @@ const Home = () => {
   useEffect(() => {
 
     axios.get("https://food-hunter-website-server.vercel.app/food/items",{withCredentials:true}).then((data) => {
-      toast.loading("Loading...")
 
       setfooditems(data.data[0] );
       setfoodcategory(data.data[1] );

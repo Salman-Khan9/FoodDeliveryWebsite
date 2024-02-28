@@ -15,7 +15,6 @@ const Orders = () => {
         const fetchOrders = async () => {
             try {
                 const res = await axios.get("https://food-hunter-website-server.vercel.app/orders", { withCredentials: true });
-     toast.loading("Loading Orders...")
                
                 setOrders(res.data);
             } catch (error) {
