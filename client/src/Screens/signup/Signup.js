@@ -67,7 +67,7 @@ const Signup = () => {
     name: formdata.name,
     email: formdata.email,
     password: formdata.password,
-    location: location?location:formattedAddress
+    location: location
   };
   const handleonsubmit = async (e) => {
     e.preventDefault();
