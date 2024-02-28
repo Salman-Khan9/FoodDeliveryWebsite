@@ -13,7 +13,7 @@ const OrderHistory = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get("https://food-delivery-website-bay.vercel.app/orderhistory", { withCredentials: true });
+                const res = await axios.get("https://food-hunter-website-server.vercel.app/orderhistory", { withCredentials: true });
                    toast.loading("Loading Order History...")
 
                 setOrders(res.data);

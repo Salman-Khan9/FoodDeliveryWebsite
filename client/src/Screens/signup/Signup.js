@@ -72,7 +72,7 @@ const Signup = () => {
   const handleonsubmit = async (e) => {
     e.preventDefault();
     try {
-       await axios.post("https://food-delivery-website-bay.vercel.app/signup", payload,{withCredentials:true});
+       await axios.post("https://food-hunter-website-server.vercel.app/signup", payload,{withCredentials:true});
      toast.loading("Singinng Up...")
       
       navigate("/login");

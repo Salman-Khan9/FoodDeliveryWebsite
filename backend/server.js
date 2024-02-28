@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cors({
-  origin: "https://food-delivery-website-frontend.vercel.app",
+  origin: "https://food-hunter-website-client.vercel.app",
   credentials: true  // Allow cookies to be sent in CORS requests
 }));
 app.use(express.json());

@@ -28,7 +28,7 @@ const Cart = () => {
     e.preventDefault();
     try {
       if (payload.length > 0) {
-        await axios.post("https://food-delivery-website-bay.vercel.app/order", payload,{withCredentials:true});
+        await axios.post("https://food-hunter-website-server.vercel.app/order", payload,{withCredentials:true});
         toast.loading("Placing Order...")
         dispatch(delete_items());
         toast.success("Orderd Taken")

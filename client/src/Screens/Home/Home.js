@@ -11,7 +11,7 @@ const Home = () => {
   const [foodcategory, setfoodcategory] = useState([]);
   useEffect(() => {
 
-    axios.get("https://food-delivery-website-bay.vercel.app/food/items",{withCredentials:true}).then((data) => {
+    axios.get("https://food-hunter-website-server.vercel.app/food/items",{withCredentials:true}).then((data) => {
       toast.loading("Loading...")
 
       setfooditems(data.data[0] );

@@ -14,7 +14,7 @@ const Orders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get("https://food-delivery-website-bay.vercel.app/orders", { withCredentials: true });
+                const res = await axios.get("https://food-hunter-website-server.vercel.app/orders", { withCredentials: true });
      toast.loading("Loading Orders...")
                
                 setOrders(res.data);
