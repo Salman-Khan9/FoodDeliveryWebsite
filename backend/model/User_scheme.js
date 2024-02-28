@@ -16,7 +16,7 @@ const scheme = new mongoose.Schema({
     latitude: {
       type: Number,
       required: function() {
-        return !this.formattedAddress; // Latitude is required if formattedAddress is not provided
+        return !this.formattedAddress; // Longitude is required if formattedAddress is not provided
       }
     },
     longitude: {
@@ -26,7 +26,11 @@ const scheme = new mongoose.Schema({
       }
     },
     formattedAddress: {
-      type: String
+      type: String,
+      required : function() {
+        return !this.latitude || !this.longitude; // Latitude is required if formattedAddress is not provided
+      }
+
     }
   
   },
