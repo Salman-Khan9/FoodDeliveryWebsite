@@ -136,7 +136,7 @@ const Signup = () => {
               onChange={handleLocationChange}
             />
             <button className="btn btn-outline-secondary " type="button" onClick={ongetlocation}>
-              <FaLocationCrosshairs />
+              <FaLocationCrosshairs /> Current Location
             </button>
           </div>
         </div>
