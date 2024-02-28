@@ -7,12 +7,14 @@ import Navbar from "./components/navbar/Navbar";
 import AddFoodItem from "./Screens/AddFoodItems/AddFoodItem";
 import OrderHistory from "./Screens/OrderHistory/OrderHistory";
 import Orders from "./Screens/Orders/Orders";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div>
       <Router>
         <Navbar></Navbar>
+        <ToastContainer/>
         <Routes>
           
           <Route  path="/" element={<Home />} />
