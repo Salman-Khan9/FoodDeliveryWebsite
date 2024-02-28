@@ -14,7 +14,7 @@ const scheme = new mongoose.Schema({
   },
   location: {
     type: mongoose.Schema.Types.Mixed,
-    required: true
+    required: false
   
   },
   date: { type: Date, default: Date.now },
