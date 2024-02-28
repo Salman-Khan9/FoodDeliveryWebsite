@@ -8,6 +8,8 @@ import AddFoodItem from "./Screens/AddFoodItems/AddFoodItem";
 import OrderHistory from "./Screens/OrderHistory/OrderHistory";
 import Orders from "./Screens/Orders/Orders";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
