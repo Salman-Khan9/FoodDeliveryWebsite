@@ -13,25 +13,8 @@ const scheme = new mongoose.Schema({
     required: true,
   },
   location: {
-    latitude: {
-      type: Number,
-      required: function() {
-        return !this.formattedAddress; // Longitude is required if formattedAddress is not provided
-      }
-    },
-    longitude: {
-      type: Number,
-      required: function() {
-        return !this.formattedAddress; // Longitude is required if formattedAddress is not provided
-      }
-    },
-    formattedAddress: {
-      type: String,
-      required : function() {
-        return !this.latitude || !this.longitude; // Latitude is required if formattedAddress is not provided
-      }
-
-    }
+    type: mongoose.Schema.Types.Mixed,
+    required: true
   
   },
   date: { type: Date, default: Date.now },
