@@ -124,9 +124,10 @@ const Signup = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputLocation1" className="form-label">Location</label>
+          <label htmlFor="exampleInputLocation1"  className="form-label">Location</label>
           <div className="input-group">
             <input
+            disabled={true}
               type="text"
               name="location"
               value={formattedAddress}
